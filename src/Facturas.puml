@@ -1,0 +1,46 @@
+@startuml
+class Supermercado {
+    -nombre: String
+
+    +generarFactura()
+    +mostrarInventario()
+    +mostrarFacturas()
+}
+
+class Factura {
+    -costoTotal: double
+}
+
+class Producto {
+    -nombre: String
+    -precioUnitario: double
+}
+
+class Cliente {
+    -nombre: String
+    -cédula: String
+}
+
+class ClienteManaba {
+    -IVAESPECIALIZADO
+}
+
+class ClienteGuayaco {
+    -IVAESPECIALIZADO
+}
+
+class ProductoIVA {
+    -{static}IVA: double
+}
+
+Producto <|-- ProductoIVA
+Producto <|-- ProductoSinIVA
+Supermercado -->"*" Producto: - productos
+Supermercado -->"*" Factura: - facturas
+Supermercado -->"*" Cliente: - clientes
+Cliente ->"1" Factura: - factura
+ClienteManaba -up-|> Cliente
+ClienteGuayaco -up-|> Cliente
+
+Factura -->"*" Producto: - productos
+@enduml
