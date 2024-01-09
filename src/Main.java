@@ -3,9 +3,9 @@ public class Main {
     public static void main(String[] args) {
         Supermercado superMaxi = new Supermercado("Tuti");
         superMaxi.abastecer(new ProductoSinIva("Leche", 0.95, 10)); //Productos comestibles no tienen IVA
-        superMaxi.abastecer(new ProductoConIVA("Rexona", 4.60, 10));
+        superMaxi.abastecer(new ProductoConIVA12("Rexona", 4.60, 10));
         superMaxi.abastecer(new ProductoSinIva("Leche", 0.95, 10)); //Productos comestibles no tienen IVA
-        superMaxi.abastecer(new ProductoConIVA("Jabón", 1.30, 10));
+        superMaxi.abastecer(new ProductoConIVA12("Jabón", 1.30, 10));
 
         ClienteNormal cliente1 = new ClienteNormal("Leonel", "1750188235");
         ClienteManaba cliente2 = new ClienteManaba("Leonel", "1750188235");

@@ -18,7 +18,14 @@ public class Supermercado {
     }
 
     public void abastecer(Producto productoNuevo) {
+        if(datosProductoSonVálidos(productoNuevo)){
+            return;
+        }
         productos[númeroDeProductos++] = productoNuevo;
+    }
+
+    private boolean datosProductoSonVálidos(Producto productoNuevo) {
+        return productoNuevo.getPrecioUnitario() > 0 && productoNuevo.getCantidad() > 0;
     }
 
     public Factura generarFactura(Cliente clienteNuevo) {
@@ -31,9 +38,17 @@ public class Supermercado {
         double iva = calcularIVATotal(comprasDeCliente, clienteNuevo);
         double total = calcularTotal(comprasDeCliente, clienteNuevo);
 
+        if(!datosSonVálidos(subTotal, iva, total)) {
+            return null;
+        }
+
         nuevaFactura = new Factura(subTotal, iva, total, comprasDeCliente, clienteNuevo);
         registrarFactura(nuevaFactura);
         return nuevaFactura;
+    }
+
+    private boolean datosSonVálidos(double subTotal, double iva, double total) {
+        return subTotal >= 0 && iva >= 0 && total > 0;
     }
 
     private void registrarFactura(Factura nuevaFactura) {
@@ -92,7 +107,6 @@ public class Supermercado {
                 productoAReducir.reducirCantidad(cantidadAReducir);
                 break;
             }
-
         }
     }
 
@@ -121,8 +135,15 @@ public class Supermercado {
     }
 
     public void registrarCliente(Cliente cliente) {
+        if(!clienteEsVálido(cliente)) {
+            return;
+        }
         clientes[númeroDeClientes++] = cliente;
         cliente.habilitarProductos(productos);
+    }
+
+    private boolean clienteEsVálido(Cliente clienteAValidar) {
+        return clienteAValidar != null;
     }
 
     public Producto getProducto(int códigoDeProducto) {
@@ -137,6 +158,4 @@ public class Supermercado {
             System.out.println(producto + " cantidad: | " + producto.getCantidad());
         }
     }
-
-
 }

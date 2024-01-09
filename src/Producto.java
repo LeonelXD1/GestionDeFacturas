@@ -30,7 +30,7 @@ public abstract class Producto {
         this.cantidad -= cantidadAReducir;
     }
 
-    public Object getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 }

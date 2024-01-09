@@ -1,7 +1,7 @@
-public class ProductoConIVA extends Producto {
+public class ProductoConIVA12 extends Producto {
     private final static double IVA = 0.12;
 
-    public ProductoConIVA(String nombre, double precioUnitario, int cantidad) {
+    public ProductoConIVA12(String nombre, double precioUnitario, int cantidad) {
         super(nombre, precioUnitario, cantidad);
     }
 

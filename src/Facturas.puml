@@ -2,6 +2,7 @@
 class Supermercado {
     -nombre: String
 
+    +registrarCliente()
     +generarFactura()
     +mostrarInventario()
     +mostrarFacturas()
@@ -11,12 +12,13 @@ class Factura {
     -costoTotal: double
 }
 
-class Producto {
+abstract class Producto {
     -nombre: String
     -precioUnitario: double
+    +{abstract}calcularIva()
 }
 
-class Cliente {
+abstract class Cliente {
     -nombre: String
     -cédula: String
 }
@@ -33,7 +35,8 @@ class ProductoIVA {
     -{static}IVA: double
 }
 
-Producto <|-- ProductoIVA
+Producto <|-- ProductoConIVA12
+Producto <|-- ProductoConIVA14
 Producto <|-- ProductoSinIVA
 Supermercado -->"*" Producto: - productos
 Supermercado -->"*" Factura: - facturas
@@ -41,6 +44,5 @@ Supermercado -->"*" Cliente: - clientes
 Cliente ->"1" Factura: - factura
 ClienteManaba -up-|> Cliente
 ClienteGuayaco -up-|> Cliente
-
 Factura -->"*" Producto: - productos
 @enduml

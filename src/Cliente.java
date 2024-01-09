@@ -10,7 +10,7 @@ public abstract class Cliente {
         this.cédula = cédula;
         compras = new Compra[10];
         númeroDeCompras = 0;
-        productos = new Producto[númeroDeCompras];
+//        productos = new Producto[númeroDeCompras];
     }
 
     @Override
