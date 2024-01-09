@@ -147,7 +147,14 @@ public class Supermercado {
     }
 
     public Producto getProducto(int códigoDeProducto) {
+        if(!esCódigoVálido(códigoDeProducto)){
+            return null;
+        }
         return productos[códigoDeProducto];
+    }
+
+    private boolean esCódigoVálido(int códigoDeProducto) {
+        return códigoDeProducto < productos.length;
     }
 
     public void mostrarInventario(){
