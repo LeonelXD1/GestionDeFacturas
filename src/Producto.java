@@ -27,7 +27,14 @@ public abstract class Producto {
     public abstract double calcularIVA(Cliente cliente);
 
     public void reducirCantidad(int cantidadAReducir) {
+        if(!esCantidadVálida(cantidadAReducir)) {
+            return;
+        }
         this.cantidad -= cantidadAReducir;
+    }
+
+    private boolean esCantidadVálida(int cantidadAReducir) {
+        return this.cantidad >= cantidadAReducir;
     }
 
     public int getCantidad() {
